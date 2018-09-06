@@ -9,7 +9,7 @@
   },
   "scripts": {
     "server-dev": "nodemon ./server",
-    "react-dev": "webpack -w sass --watch input.scss output.css"
+    "react-dev": "webpack -w"
   },
   "dependencies": {
     "axios": "^0.18.0",
