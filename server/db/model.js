@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
-const sequelize = require("./index.js");
+const connection = require("./index.js");
 
-const PlayerList = sequelize.define("list", {
+const PlayerList = connection.define("list", {
   id: {
     type: Sequelize.smallserial,
     allowNull: false
@@ -32,7 +32,7 @@ const PlayerList = sequelize.define("list", {
   }
 });
 
-sequelize.sync({force: false});
+connection.sync({force: false});
 
 module.exports = {
     PlayerList
