@@ -3,4 +3,13 @@ body {
   color: #333;
 }
 
+#app {
+  height: 379px;
+  width: 960px;
+  margin-top: 47px;
+  border: 3px solid black;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 /*# sourceMappingURL=index.css.map */
