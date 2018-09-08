@@ -53,6 +53,7 @@ const playlistCenter = {
 
 const playlistTime = {
   marginLeft: '20px',
+  color: 'white',
   float: 'right',
   width: '150px',
   textAlign: "right",

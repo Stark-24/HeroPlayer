@@ -7,9 +7,9 @@ const divStyle = {
   height: "380px",
   width: "1240px",
   marginTop: "47px",
-  border: "3px solid black",
   marginRight: "auto",
-  marginLeft: "auto"
+  marginLeft: "auto",
+  background: 'linear-gradient(to right, gray , black)'
 };
 
 
