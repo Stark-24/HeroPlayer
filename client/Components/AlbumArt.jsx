@@ -5,7 +5,8 @@ const albumArt = {
   width: "340px",
   height: "340px",
   float: "right",
-  marginRight: "15px"
+  marginRight: "15px",
+  padding: '0px'
 };
 
 class AlbumArt extends React.Component {

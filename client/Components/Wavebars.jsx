@@ -1,28 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2317.386 296.99">
+import React from 'react';
+
+
+const styles = {
+  cls1: {
+    opacity: 1,
+    fill: '#bfbfbf',
+    width: '50px',
+    marginBottom: '50px'
+  },
+}
+
+export default () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2317.386 166.99">
   <defs>
-    <style>
-      .cls-1 {
-        opacity: 0.5;
-      }
-
-      .cls-2, .cls-4 {
-        fill: red;
-      }
-
-      .cls-2 {
-        stroke: #fff;
-      }
-
-      .cls-3 {
-        stroke: none;
-      }
+    <style>   
     </style>
   </defs>
-  <g id="Symbol_1_1" data-name="Symbol 1 – 1" class="cls-1" transform="translate(-1556 -1112.909)">
+  <g id="Symbol_1_1" data-name="Symbol 1 – 1" style={styles.cls1} transform="translate(-1556 -1112.909)">
     <g id="Group_1" data-name="Group 1" transform="translate(1556 1112.909)">
-      <g id="Rectangle_64" data-name="Rectangle 64" class="cls-2" transform="translate(0 53.146)">
-        <rect class="cls-3" width="9" height="243.844"/>
-        <rect class="cls-4" x="0.5" y="0.5" width="8" height="242.844"/>
+      <g id="Rectangle_64" data-name="Rectangle 64" class="cls-2" style={styles.cls2} transform="translate(0 53.146)">
+        <rect style={styles.cls3} width="9" height="243.844"/>
+        <rect style={styles.cls4} x="0.5" y="0.5" width="8" height="242.844"/>
       </g>
       <g id="Rectangle_65" data-name="Rectangle 65" class="cls-2" transform="translate(11 36.212)">
         <rect class="cls-3" width="9" height="260.778"/>
@@ -889,3 +887,5 @@
     </g>
   </g>
 </svg>
+)
+

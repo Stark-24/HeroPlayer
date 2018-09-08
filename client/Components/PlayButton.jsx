@@ -83,13 +83,18 @@ const playlistTag = {
 class PlayButton extends React.Component {
   constructor(props) {
     super(props);
+    this.playButton = this.playButton.bind(this)
+  }
+
+  playButton() {
+    console.log('hello')
   }
 
   render() {
     return (
       <section id="playlistsection">
         <section style={playlist} id="playlist">
-          <button style={playbutton} id="playbutton" />
+          <button onClick={this.playButton} style={playbutton} id="playbutton" />
           <section style={playlistUser} id="playlist-user">
             User goes here
           </section>

@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
-import WaveBar from 'react-svg-loader!./wave-bars.svg';
+import WaveBar from './Wavebars.jsx';
 
 const wavebars = {
-    //backgroundImage = 'url({./wave-bars.svg})', 
-   // border: '3px solid black',
-    width: '800px',
-    height: '60px',
+    width: '780px',
+    height: '50px',
     marginTop: '240px',
     marginLeft: '30px',
     marginRight: '390px',
-    marginBottom: '20px'
+    marginBottom: '100px'
 }
 class WaveForm extends React.Component {
     constructor(props){
@@ -20,6 +18,7 @@ class WaveForm extends React.Component {
         return(
             <div style={wavebars} id="waveform">
             <WaveBar />
+            <br />
             </div>
         )
     }
