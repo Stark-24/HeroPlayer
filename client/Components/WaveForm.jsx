@@ -1,19 +1,23 @@
 import React, {Component} from 'react';
-//import waves from '.../images/wave-bars.svg'
 
 const wavebars = {
-    // backgroundImage: `url("./wave-bars.svg")`,
-    border: '3px solid black'
+    //backgroundImage = 'url({./wavebars.png})', 
+    border: '3px solid black',
+    width: '820px',
+    height: '100px',
+    marginTop: '190px',
+    marginLeft: '30px',
+    marginRight: '390px'
 }
-
 class WaveForm extends React.Component {
     constructor(props){
         super(props)
     }
+    
     render() {
         return(
-            <div styles={wavebars} id="waveform">
-
+            <div style={wavebars} id="waveform">
+            
             </div>
         )
     }

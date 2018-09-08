@@ -64,7 +64,7 @@ const playlistTime = {
 };
 
 const playlistTag = {
-  borderRadius: '10px 10px',
+  borderRadius: '13px 13px',
   float: 'right',
   marginLeft: '20px',
   width: 'max-content',
