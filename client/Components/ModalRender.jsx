@@ -12,6 +12,7 @@ const ModalModalExample = (props) => (
     <Modal.Content image>
       <Image wrapped size='large' src='https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/01/12/11/es-divide-final-artwork-lo-res.jpg?w968' />
     </Modal.Content>
+    
   </Modal>
 )
 
