@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import Play from './Play.jsx'
+import Pause from './Pause.jsx'
+import PauseOnHover from './PauseOnHover.jsx'
 
 const playlist = {
   width: "650px",
@@ -10,13 +13,13 @@ const playlist = {
 };
 
 const playbutton = {
-  backgroundImage:
-    'url("http://alabamasfinest.net/image/img/skin/jrAudioPro/button_player_pause.png")',
-  backgroundSize: "cover",
+  //backgroundSize: "cover",
   borderRadius: "50%",
+  padding: '0px',
   width: "60px",
   height: "60px",
-  float: "left"
+  float: "left",
+  outline: '0'
 };
 
 const playlistUser = {
@@ -83,18 +86,33 @@ const playlistTag = {
 class PlayButton extends React.Component {
   constructor(props) {
     super(props);
-    this.playButton = this.playButton.bind(this)
+    this.playButton = this.playButton.bind(this);
+    this.state = {
+      button: true
+    }
   }
 
-  playButton() {
-    console.log('hello')
+  playButton(e) {
+    this.setState({
+      button: !this.state.button
+    })
   }
+
+  // playButtonOnHover(e) {
+  //   if(this.state.button) {
+  //     console.log('hi')
+  //   } else {
+  //     this.setState({
+  //       button: <PauseOnHover />
+  //     })
+  //   }
+  // }
 
   render() {
     return (
       <section id="playlistsection">
         <section style={playlist} id="playlist">
-          <button onClick={this.playButton} style={playbutton} id="playbutton" />
+          <button onClick={(e) => this.playButton(e)} onMouseEnter={(e) => this.playButtonOnHover(e)} style={playbutton} width='100%' id="playbutton">{this.state.button ? <Play /> : <Pause />}</button>
           <section style={playlistUser} id="playlist-user">
             User goes here
           </section>
