@@ -8,9 +8,6 @@ const barHighlight = {
 const barStyle = {
   fill: "#bfbfbf",
   opacity: 1
-  // width: "50px",
-  // border: "5px solid red",
-  // writable: 'true'
 };
 class WaveBar extends React.Component {
   constructor(props) {
@@ -23,7 +20,6 @@ class WaveBar extends React.Component {
   }
 
   mouseOverEffect(e) {
-    //var currentClass3 = document.getElementsByClassName("cls-3");
     var currentClass4 = document.getElementsByClassName("cls-4");
     for (var j = 0; j < currentClass4.length; j++) {
       if (
