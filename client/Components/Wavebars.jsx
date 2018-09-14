@@ -9,6 +9,11 @@ const barStyle = {
   fill: "#bfbfbf",
   opacity: 1
 };
+
+const randomNum = () => {
+  return Math.floor(Math.random() * 270);
+}
+
 class WaveBar extends React.Component {
   constructor(props) {
     super(props);

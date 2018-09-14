@@ -2,12 +2,15 @@ var express = require('express');
 var parser = require('body-parser');
 var db = require('./db');
 var path = require('path');
+const router = require('./routes.js');
 var PORT = 9001;
 
 var app = express();
 
 app.use(parser.json());
 app.use(parser.urlencoded({extended: true}));
+
+app.use('/api', router);
 
 app.use(express.static(path.resolve(__dirname, '../public')));
 

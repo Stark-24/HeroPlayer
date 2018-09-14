@@ -1,39 +1,60 @@
 const Sequelize = require("sequelize");
 const connection = require("./index.js");
 
-const PlayerList = connection.define("list", {
-  id: {
-    type: Sequelize.smallserial,
-    allowNull: false
+const PlayerList = connection.define(
+  "cloudsongs",
+  {
+    id: {
+      type: Sequelize.SMALLINT,
+      allowNull: false,
+      unique: true,
+      primaryKey: true
+    },
+    title: {
+      type: Sequelize.STRING(2000),
+      allowNull: false,
+      unique: true
+    },
+    artist: {
+      type: Sequelize.STRING(2000),
+      allowNull: false,
+      unique: true
+    },
+    media: {
+      type: Sequelize.STRING(2000),
+      allowNull: false,
+      unique: true
+    },
+    album_art: {
+      type: Sequelize.STRING(2000),
+      allowNull: false,
+      unique: true
+    },
+    upload_date: {
+      type: Sequelize.STRING(2000),
+      allowNull: false,
+      unique: true
+    },
+    tags: {
+      type: Sequelize.STRING(1000),
+      allowNull: true
+    },
+    plays: {
+      type: Sequelize.SMALLINT,
+      allowNull: false,
+    },
+    created_at: {
+      type: Sequelize.DATE,
+      allowNull: true
+    },
+    updated_at: {
+      type: Sequelize.DATE,
+      allowNull: true
+    }
   },
-  title: {
-    type: Sequelize.STRING(50),
-    allowNull: false
-  },
-  artist: {
-    type: Sequelize.STRING(50),
-    allowNull: false
-  },
-  media: {
-    type: Sequelize.STRING(50),
-    allowNull: false
-  },
-  album_art: {
-    type: Sequelize.STRING(50),
-    allowNull: false
-  },
-  upload_date: {
-    type: Sequelize.TIME,
-    allowNull: false
-  },
-  plays: {
-    type: Sequelize.SMALLINT,
-    allowNull: false
-  }
-});
+  { timestamps: false }
+);
 
-connection.sync({force: false});
+connection.sync({ force: false });
 
-module.exports = {
-    PlayerList
-}
+module.exports = { PlayerList };

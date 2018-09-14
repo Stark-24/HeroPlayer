@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Play from './Play.jsx'
-import Pause from './Pause.jsx'
-import PauseOnHover from './PauseOnHover.jsx'
+import Play from "./Play.jsx";
+import Pause from "./Pause.jsx";
+import axios from "axios";
 
 const playlist = {
   width: "650px",
@@ -14,20 +14,21 @@ const playlist = {
 
 const playbutton = {
   borderRadius: "50%",
-  padding: '0px',
+  padding: "0px",
   width: "60px",
   height: "60px",
   float: "left",
-  outline: '0'
+  outline: "0"
 };
 
 const playlistUser = {
+  textAlign: 'center',
   border: "3px solid black",
   backgroundColor: "black",
   color: "white",
   width: "max-content",
-  height: "18px",
-  marginBottom: "3px",
+  height: "22px",
+  marginBottom: "5px",
   marginLeft: "69px",
   //   color: '#333',
   fontSize: "16px",
@@ -41,6 +42,8 @@ const playlistTitle = {
   color: "white",
   width: "max-content",
   height: "35px",
+  marginTop: "3px",
+  padding: '2px',
   marginLeft: "69px",
   fontSize: "24px",
   fontFamily:
@@ -48,65 +51,78 @@ const playlistTitle = {
 };
 
 const playlistCenter = {
-    float: "left",
-    width: "15%",
-    position: "relative"
-  };
+  float: "left",
+  width: "15%",
+  position: "relative"
+};
 
 const playlistTime = {
-  marginLeft: '20px',
-  color: 'white',
-  float: 'right',
-  width: '150px',
+  marginLeft: "20px",
+  color: "white",
+  float: "right",
+  width: "150px",
   textAlign: "right",
   marginTop: "15px",
-  marginBottom: '5px',
+  marginBottom: "5px",
   fontSize: "16px",
   fontFamily:
     '"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif'
 };
 
 const playlistTag = {
-  borderRadius: '13px 13px',
-  float: 'right',
-  marginLeft: '20px',
-  width: 'max-content',
-  color: 'white',
-  background: '#999',
-  padding: '5px',
+  borderRadius: "13px 13px",
+  float: "right",
+  marginLeft: "20px",
+  width: "150px",
+  color: "white",
+  background: "#999",
+  padding: "5px",
   textAlign: "right",
   fontSize: "16px",
   fontFamily:
     '"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif'
 };
 
-
-
 class PlayButton extends React.Component {
   constructor(props) {
     super(props);
-    this.playButton = this.playButton.bind(this);
+    this.toggleMusic = this.toggleMusic.bind(this);
+    //var audio = new Audio(this.props.audioInfo)
     this.state = {
-      button: true
-    }
+      button: true,
+    };
   }
 
-  playButton(e) {
+  toggleMusic() {
     this.setState({
       button: !this.state.button
     })
+    if(this.state.button) {
+      this.props.playMusic()
+    } else {
+      this.props.pauseMusic()
+    }
   }
 
   render() {
+    //var audio = new Audio(this.props.audioInfo);
     return (
       <section id="playlistsection">
         <section style={playlist} id="playlist">
-          <button onClick={(e) => this.playButton(e)} onMouseEnter={(e) => this.playButtonOnHover(e)} style={playbutton} width='100%' id="playbutton">{this.state.button ? <Play /> : <Pause />}</button>
+          <button
+            onClick={this.toggleMusic}
+            style={playbutton}
+            width="100%"
+            id="playbutton"
+          >
+            {this.state.button ? <Play /> : <Pause />}
+          </button>
+
           <section style={playlistUser} id="playlist-user">
-            User goes here
+            {this.props.artistInfo}
           </section>
           <section style={playlistTitle} id="playlist-title">
-            Title goes here
+            {this.props.titleInfo}
           </section>
         </section>
         <br />
@@ -116,7 +132,9 @@ class PlayButton extends React.Component {
             Time goes here
           </section>
           <section id="playlist-tag">
-            <p style={playlistTag} >#Tag</p>
+          {/* {this.props.tagsInfo.map((tag) => (
+            <p style={playlistTag}>{tag}</p>
+          ))} */}
           </section>
         </section>
       </section>
