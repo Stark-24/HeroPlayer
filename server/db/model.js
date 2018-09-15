@@ -17,31 +17,32 @@ const PlayerList = connection.define(
     },
     artist: {
       type: Sequelize.STRING(2000),
-      allowNull: false,
-      unique: true
+      unique: false
     },
     media: {
       type: Sequelize.STRING(2000),
       allowNull: false,
-      unique: true
+      duplicating: false
     },
     album_art: {
       type: Sequelize.STRING(2000),
       allowNull: false,
-      unique: true
+      duplicating: false
     },
     upload_date: {
       type: Sequelize.STRING(2000),
       allowNull: false,
-      unique: true
+      duplicating: false
     },
     tags: {
       type: Sequelize.STRING(1000),
-      allowNull: true
+      allowNull: true,
+      duplicating: false
     },
     plays: {
       type: Sequelize.SMALLINT,
       allowNull: false,
+      unique: false
     },
     created_at: {
       type: Sequelize.DATE,

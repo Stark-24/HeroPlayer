@@ -11,7 +11,7 @@ const barStyle = {
 };
 
 const randomNum = () => {
-  return Math.floor(Math.random() * 270);
+  return Math.floor(Math.random() * 80) + 150;
 }
 
 class WaveBar extends React.Component {
@@ -73,7 +73,7 @@ class WaveBar extends React.Component {
                 className="cls-3"
                 id="1"
                 width="9"
-                height="243.844"
+                height= {randomNum()}
               />
               <rect
                 onMouseEnter={this.mouseOverEffect}
@@ -83,7 +83,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="242.844"
+                height={randomNum()}
               />
             </g>
             <g
@@ -98,7 +98,7 @@ class WaveBar extends React.Component {
                 className="cls-3"
                 id="2"
                 width="9"
-                height="260.778"
+                height={randomNum()}
               />
               <rect
                 onMouseEnter={this.mouseOverEffect}
@@ -108,7 +108,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="259.778"
+                height={randomNum()}
               />
             </g>
             <g
@@ -123,7 +123,7 @@ class WaveBar extends React.Component {
                 className="cls-3"
                 id="3"
                 width="9"
-                height="243.844"
+                height={randomNum()}
               />
               <rect
                 onMouseEnter={this.mouseOverEffect}
@@ -133,7 +133,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="242.844"
+                height={randomNum()}
               />
             </g>
             <g
@@ -148,7 +148,7 @@ class WaveBar extends React.Component {
                 className="cls-3"
                 id="4"
                 width="9"
-                height="251.104"
+                height={randomNum()}
               />
               <rect
                 onMouseEnter={this.mouseOverEffect}
@@ -158,7 +158,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="250.104"
+                height={randomNum()}
               />
             </g>
             <g
@@ -173,7 +173,7 @@ class WaveBar extends React.Component {
                 className="cls-3"
                 id="5"
                 width="9"
-                height="243.844"
+                height={randomNum()}
               />
               <rect
                 onMouseEnter={this.mouseOverEffect}
@@ -183,7 +183,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="242.844"
+                height={randomNum()}
               />
             </g>
             <g
@@ -198,7 +198,7 @@ class WaveBar extends React.Component {
                 className="cls-3"
                 id="6"
                 width="9"
-                height="260.778"
+                height={randomNum()}
               />
               <rect
                 onMouseEnter={this.mouseOverEffect}
@@ -208,7 +208,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="259.778"
+                height={randomNum()}
               />
             </g>
             <g
@@ -298,7 +298,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="276.705"
+                height={randomNum()}
               />
             </g>
             <g
@@ -334,7 +334,7 @@ class WaveBar extends React.Component {
                 x="0.5"
                 y="0.5"
                 width="8"
-                height="276.705"
+                height={randomNum()}
               />
             </g>
             <g

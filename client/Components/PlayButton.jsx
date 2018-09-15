@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Play from "./Play.jsx";
 import Pause from "./Pause.jsx";
 import axios from "axios";
+import humanized_time_span from '../humanizedtime.js'
 
 const playlist = {
   width: "650px",
@@ -73,7 +74,7 @@ const playlistTag = {
   borderRadius: "13px 13px",
   float: "right",
   marginLeft: "20px",
-  width: "150px",
+  width: "max-content",
   color: "white",
   background: "#999",
   padding: "5px",
@@ -87,7 +88,7 @@ class PlayButton extends React.Component {
   constructor(props) {
     super(props);
     this.toggleMusic = this.toggleMusic.bind(this);
-    //var audio = new Audio(this.props.audioInfo)
+    
     this.state = {
       button: true,
     };
@@ -129,12 +130,10 @@ class PlayButton extends React.Component {
         <section style={playlistCenter}>
           <section style={playlistTime} id="playlist-time" align="right">
             {" "}
-            Time goes here
+            {humanized_time_span(this.props.dateInfo)}
           </section>
           <section id="playlist-tag">
-          {/* {this.props.tagsInfo.map((tag) => (
-            <p style={playlistTag}>{tag}</p>
-          ))} */}
+            <p style={playlistTag}>{this.props.tagsInfo}</p>
           </section>
         </section>
       </section>

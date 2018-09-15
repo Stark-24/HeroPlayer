@@ -18,6 +18,9 @@ var insertAllSongs = function(req, res) {
       .then(song => {
         console.log("song saved");
       })
+      .catch(err => {
+        console.log(err);
+      });
   });
 };
 

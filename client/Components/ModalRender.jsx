@@ -2,7 +2,8 @@ import React from "react";
 import { Button, Icon, Image, Modal } from "semantic-ui-react";
 
 const modalStyle = {
-  width: "500px"
+  //float: "center",
+  width: "300px"
 };
 
 const ModalModalExample = props => (
@@ -15,9 +16,9 @@ const ModalModalExample = props => (
     }
     closeIcon
   >
-    <Modal.Header>Song Title Goes Here</Modal.Header>
+    <Modal.Header>{props.albumTitle}</Modal.Header>
     <Modal.Content image>
-      <Image wrapped size="large" src="https://s3-us-west-1.amazonaws.com/starkloud/SONGS/constellate.jpg" />
+      <Image wrapped size="large" src={props.albumArtInfo} />
     </Modal.Content>
   </Modal>
 );

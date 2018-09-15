@@ -17,7 +17,7 @@ class AlbumArt extends React.Component {
   render() {
     return (
       <div style={albumArt}>
-        <ModalModalExample albumArtInfo={this.props.albumArtInfo} albumStyle={albumArt} />
+        <ModalModalExample albumTitle={this.props.albumTitle} albumArtInfo={this.props.albumArtInfo} albumStyle={albumArt} />
       </div>
     );
   }

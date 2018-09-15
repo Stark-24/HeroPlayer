@@ -6,8 +6,13 @@ const wavebars = {
   height: "50px",
   marginTop: "240px",
   marginLeft: "30px",
-  marginRight: "390px"
+  marginRight: "390px",
+  borderBottom: '2px',
+  padding: '0px'
 };
+
+
+
 class WaveForm extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +21,9 @@ class WaveForm extends React.Component {
   render() {
     return (
       <div style={wavebars} id="waveform">
-      <WaveBar />  
+      <WaveBar />
+
+        
       </div>
     );
   }
