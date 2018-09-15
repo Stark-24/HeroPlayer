@@ -3,7 +3,9 @@ import PlayButton from "./PlayButton.jsx";
 import AlbumArt from "./AlbumArt.jsx";
 import WaveForm from "./WaveForm.jsx";
 import axios from "axios";
-//import MusicPlayer from 'react-responsive-music-player';
+import ColorThief from './colorthief.js'
+
+var colorThief = new ColorThief();
 
 const divStyle = {
   height: "380px",
@@ -11,7 +13,7 @@ const divStyle = {
   marginTop: "47px",
   marginRight: "auto",
   marginLeft: "auto",
-  background: "linear-gradient(to right, gray , black)"
+  background: ""
 };
 
 const timeInfoStyle = {
@@ -64,13 +66,14 @@ class HeroPlayer extends React.Component {
         tags: data.tags,
         upload_date: data.upload_date
       });
+
+      divStyle.background = colorThief.getColor("https://s3-us-west-1.amazonaws.com/starkloud/SONGS/totheroofs.jpg");
     });
+    
   }
 
   playMusic(audioPlayer) {
     audioPlayer.play();
-    //current = parseInt(audioPlayer.currentTime % 60);
-    //duration = audioPlayer.duration;
   }
 
   pauseMusic(audioPlayer) {
@@ -81,6 +84,7 @@ class HeroPlayer extends React.Component {
     var audioPlayer = document.getElementById("song");
     var current = "0:00";
     var duration = "0:00";
+    
     return (
       <div style={divStyle} id="mainplayer">
         <PlayButton
@@ -115,7 +119,7 @@ class HeroPlayer extends React.Component {
             document.getElementById("audioduration").innerHTML =
               fromSeconds(Math.floor(audioPlayer.duration));
           }}
-          autoPlay
+          autoPlay loop
         />
         <WaveForm />
         <span id="currenttime" style={timeInfoStyle}> {current} </span>
