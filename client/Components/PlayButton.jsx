@@ -90,7 +90,7 @@ class PlayButton extends React.Component {
     this.toggleMusic = this.toggleMusic.bind(this);
     
     this.state = {
-      button: false,
+      button: true,
     };
   }
 

@@ -13,7 +13,7 @@ const divStyle = {
   marginTop: "47px",
   marginRight: "auto",
   marginLeft: "auto",
-  background: ""
+  background: "#8fa3a3"
 };
 
 const timeInfoStyle = {
