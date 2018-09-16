@@ -3,9 +3,7 @@ import PlayButton from "./PlayButton.jsx";
 import AlbumArt from "./AlbumArt.jsx";
 import WaveForm from "./WaveForm.jsx";
 import axios from "axios";
-import ColorThief from './colorthief.js'
-
-var colorThief = new ColorThief();
+import RGBaster from "./rgbaster.js";
 
 const divStyle = {
   height: "380px",
@@ -66,10 +64,16 @@ class HeroPlayer extends React.Component {
         tags: data.tags,
         upload_date: data.upload_date
       });
-
-      divStyle.background = colorThief.getColor("https://s3-us-west-1.amazonaws.com/starkloud/SONGS/totheroofs.jpg");
+      var img = this.state.album_art;
+      RGBaster.colors(img, {
+        success: function(payload) {
+          var background = document.getElementById("mainplayer");
+          background.style.backgroundImage = `linear-gradient(to bottom right, ${
+            payload.dominant
+          }, ${payload.palette[9]})`;
+        }
+      });
     });
-    
   }
 
   playMusic(audioPlayer) {
@@ -84,7 +88,7 @@ class HeroPlayer extends React.Component {
     var audioPlayer = document.getElementById("song");
     var current = "0:00";
     var duration = "0:00";
-    
+
     return (
       <div style={divStyle} id="mainplayer">
         <PlayButton
@@ -95,6 +99,7 @@ class HeroPlayer extends React.Component {
           tagsInfo={this.state.tags}
           dateInfo={this.state.upload_date}
         />
+
         <AlbumArt
           albumArtInfo={this.state.album_art}
           albumTitle={this.state.title}
@@ -114,16 +119,24 @@ class HeroPlayer extends React.Component {
               var timestring = minutes + ":" + seconds;
               return timestring;
             }
-            document.getElementById("currenttime").innerHTML =
-              fromSeconds(Math.floor(audioPlayer.currentTime));
-            document.getElementById("audioduration").innerHTML =
-              fromSeconds(Math.floor(audioPlayer.duration));
+            document.getElementById("currenttime").innerHTML = fromSeconds(
+              Math.floor(audioPlayer.currentTime)
+            );
+            document.getElementById("audioduration").innerHTML = fromSeconds(
+              Math.floor(audioPlayer.duration)
+            );
           }}
-          autoPlay loop
+          loop
         />
         <WaveForm />
-        <span id="currenttime" style={timeInfoStyle}> {current} </span>
-        <span id="audioduration" style={durationInfoStyle}> {duration} </span>
+        <span id="currenttime" style={timeInfoStyle}>
+          {" "}
+          {current}{" "}
+        </span>
+        <span id="audioduration" style={durationInfoStyle}>
+          {" "}
+          {duration}{" "}
+        </span>
       </div>
     );
   }

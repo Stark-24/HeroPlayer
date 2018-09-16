@@ -7,6 +7,7 @@ module.exports = {
        .then(song => {
            if(song){
                console.log('newSong')
+               
                res.status(200).send(song);
            } else {
                res.status(404).send('Song not found')
