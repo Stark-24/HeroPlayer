@@ -16,5 +16,5 @@ module.exports = {
 }
 
 const randomNum = () => {
-   return Math.floor(Math.random() * 39) + 1
+   return Math.floor(Math.random() * 99) + 1
 }

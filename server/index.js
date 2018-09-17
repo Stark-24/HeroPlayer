@@ -8,13 +8,19 @@ var cors = require("cors");
 
 var app = express();
 
+var corsOptions = {
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: '*',
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+}
+
+app.use(cors(corsOptions))
+
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: true }));
 
-// app.use(cors({
-//     origin: 'http://localhost:9001',
-//     credentials: true
-//   }));
 
 app.use("/api", router);
 
