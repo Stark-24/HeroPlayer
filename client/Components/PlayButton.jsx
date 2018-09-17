@@ -59,12 +59,12 @@ const playlistCenter = {
 
 const playlistTime = {
   marginLeft: "20px",
-  color: "white",
+  color: "#E3E3E3",
   float: "right",
   width: "150px",
   textAlign: "right",
   marginTop: "15px",
-  marginBottom: "5px",
+  marginBottom: "10px",
   fontSize: "16px",
   fontFamily:
     '"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif'

@@ -55,25 +55,33 @@ class HeroPlayer extends React.Component {
   }
 
   fetchMusic() {
-    axios.get("api/heroPlayer").then(({ data }) => {
-      this.setState({
-        title: data.title,
-        artist: data.artist,
-        album_art: data.album_art,
-        media: data.media,
-        tags: data.tags,
-        upload_date: data.upload_date
-      });
-      var img = this.state.album_art;
-      RGBaster.colors(img, {
-        success: function(payload) {
-          var background = document.getElementById("mainplayer");
-          background.style.backgroundImage = `linear-gradient(to bottom right, ${
-            payload.dominant
-          }, ${payload.palette[9]})`;
+    axios
+      .get("api/heroPlayer", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers":
+            "Origin, X-Requested-With, Content-Type, Accept, Authorization"
         }
+      })
+      .then(({ data }) => {
+        this.setState({
+          title: data.title,
+          artist: data.artist,
+          album_art: data.album_art,
+          media: data.media,
+          tags: data.tags,
+          upload_date: data.upload_date
+        });
+        var img = this.state.album_art;
+        RGBaster.colors(img, {
+          success: function(payload) {
+            var background = document.getElementById("mainplayer");
+            background.style.backgroundImage = `linear-gradient(to bottom right, ${
+              payload.dominant
+            }, ${payload.palette[9]})`;
+          }
+        });
       });
-    });
   }
 
   playMusic(audioPlayer) {
@@ -87,7 +95,7 @@ class HeroPlayer extends React.Component {
   render() {
     var audioPlayer = document.getElementById("song");
     var current = "0:00";
-    var duration = "0:00";
+    var duration= "-:--";
 
     return (
       <div style={divStyle} id="mainplayer">
@@ -106,6 +114,7 @@ class HeroPlayer extends React.Component {
         />
 
         <audio
+          controls
           id="song"
           src={this.state.media}
           onTimeUpdate={() => {
@@ -119,14 +128,19 @@ class HeroPlayer extends React.Component {
               var timestring = minutes + ":" + seconds;
               return timestring;
             }
-            document.getElementById("currenttime").innerHTML = fromSeconds(
-              Math.floor(audioPlayer.currentTime)
-            );
-            document.getElementById("audioduration").innerHTML = fromSeconds(
-              Math.floor(audioPlayer.duration)
-            );
+
+            if (audioPlayer.currentTime === audioPlayer.duration) {
+              document.getElementById('currenttime').innerHTML = "0:00";
+              this.pauseMusic(audioPlayer);
+            } else {
+              document.getElementById("currenttime").innerHTML = fromSeconds(
+                Math.floor(audioPlayer.currentTime)
+              );
+              document.getElementById("audioduration").innerHTML = fromSeconds(
+                Math.floor(audioPlayer.duration)
+              );
+            }
           }}
-          loop
         />
         <WaveForm />
         <span id="currenttime" style={timeInfoStyle}>
