@@ -31,7 +31,6 @@ const playlistUser = {
   height: "22px",
   marginBottom: "5px",
   marginLeft: "69px",
-  //   color: '#333',
   fontSize: "16px",
   fontFamily:
     '"Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Garuda, Verdana, Tahoma, sans-serif'
@@ -106,7 +105,6 @@ class PlayButton extends React.Component {
   }
 
   render() {
-    //var audio = new Audio(this.props.audioInfo);
     return (
       <section id="playlistsection">
         <section style={playlist} id="playlist">

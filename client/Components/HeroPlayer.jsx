@@ -35,29 +35,20 @@ const durationInfoStyle = {
   marginRight: "75px"
 };
 
-const audioPlayerStyle = {
-  width: "780px",
-  backgroundColor: "#ddd",
-  marginLeft: "30px"
-};
-
-const progressBarStyle = {
-  width: "0%",
-  backgroundColor: "#4CAF50"
-};
-
 class HeroPlayer extends React.Component {
   constructor(props) {
     super(props);
     this.fetchMusic = this.fetchMusic.bind(this);
     this.playMusic = this.playMusic.bind(this);
     this.pauseMusic = this.pauseMusic.bind(this);
+    this.timeUpdate = this.timeUpdate.bind(this);
 
     this.state = {
       title: "",
       artist: "",
       album_art: "",
-      media: ""
+      media: "",
+      currenttime: ""
     };
   }
 
@@ -66,33 +57,37 @@ class HeroPlayer extends React.Component {
   }
 
   fetchMusic() {
-    axios.get("api/heroPlayer", {
-      headers: {'Access-Control-Allow-Origin' : '*',
-                'content-type': 'application/x-www-form-urlencoded' }
-    }).then(({ data }) => {
-      this.setState(
-        {
-          title: data.title,
-          artist: data.artist,
-          album_art: data.album_art,
-          media: data.media,
-          tags: data.tags,
-          upload_date: data.upload_date
-        },
-        () => {
-          var img = this.state.album_art;
-
-          RGBaster.colors(img, {
-            success: function(payload) {
-              var background = document.getElementById("mainplayer");
-              background.style.backgroundImage = `linear-gradient(to bottom right, ${
-                payload.dominant
-              }, ${payload.palette[9]})`;
-            }
-          });
+    axios
+      .get("api/heroPlayer", {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "content-type": "application/x-www-form-urlencoded"
         }
-      );
-    });
+      })
+      .then(({ data }) => {
+        this.setState(
+          {
+            title: data.title,
+            artist: data.artist,
+            album_art: data.album_art,
+            media: data.media,
+            tags: data.tags,
+            upload_date: data.upload_date
+          },
+          () => {
+            var img = this.state.album_art;
+
+            RGBaster.colors(img, {
+              success: function(payload) {
+                var background = document.getElementById("mainplayer");
+                background.style.backgroundImage = `linear-gradient(to bottom right, ${
+                  payload.dominant
+                }, ${payload.palette[9]})`;
+              }
+            });
+          }
+        );
+      });
   }
 
   playMusic(audioPlayer) {
@@ -105,22 +100,40 @@ class HeroPlayer extends React.Component {
     audioPlayer.pause();
   }
 
-  playProgressBar() {
-    var progressBar = document.getElementById('progressbar')
-    var audioPlayer = document.getElementById('song');
-    var value = 0;
-    
-    if(audioPlayer.currentTime !== audioPlayer.duration) {
-      value = (100 / audioPlayer.duration)* audioPlayer.currentTime;
-      progressBar.style.width = value + '%'
+  timeUpdate() {
+    function fromSeconds(seconds) {
+      var minutes =
+        Math.floor(seconds / 60) < 10
+          ? "0" + Math.floor(seconds / 60)
+          : Math.floor(seconds / 60);
+      var seconds = seconds % 60 > 9 ? seconds % 60 : "0" + (seconds % 60);
+      var timestring = minutes + ":" + seconds;
+      return timestring;
     }
-    
+
+    var audioPlayer = document.getElementById("song");
+    if (audioPlayer.currentTime === audioPlayer.duration) {
+      document.getElementById("currenttime").innerHTML = "0:00";
+      this.pauseMusic(audioPlayer);
+    } else {
+      document.getElementById("currenttime").innerHTML = fromSeconds(
+        Math.floor(audioPlayer.currentTime)
+      );
+      this.setState({
+        currenttime: audioPlayer.currentTime
+      });
+    }
+    audioPlayer.onloadedmetadata = () => {
+      document.getElementById("audioduration").innerHTML = fromSeconds(
+        Math.floor(audioPlayer.duration)
+      );
+    };
   }
 
   render() {
     var audioPlayer = document.getElementById("song");
     var current = "0:00";
-    var duration = "-:--";
+    var duration = "-:-- ";
 
     return (
       <div style={divStyle} id="mainplayer">
@@ -139,46 +152,11 @@ class HeroPlayer extends React.Component {
         />
 
         <audio
-          controls
           id="song"
           src={this.state.media}
-          onTimeUpdate={() => {
-            this.playProgressBar();
-            function fromSeconds(seconds) {
-              var minutes =
-                Math.floor(seconds / 60) < 10
-                  ? "0" + Math.floor(seconds / 60)
-                  : Math.floor(seconds / 60);
-              var seconds =
-                seconds % 60 > 9 ? seconds % 60 : "0" + (seconds % 60);
-              var timestring = minutes + ":" + seconds;
-              return timestring;
-            }
-
-            if (audioPlayer.currentTime === audioPlayer.duration) {
-              document.getElementById("currenttime").innerHTML = "0:00";
-              this.pauseMusic(audioPlayer);
-            } else {
-              document.getElementById("currenttime").innerHTML = fromSeconds(
-                Math.floor(audioPlayer.currentTime)
-              );
-              document.getElementById("audioduration").innerHTML = fromSeconds(
-                Math.floor(audioPlayer.duration)
-              );
-            }
-          }}
+          onTimeUpdate={this.timeUpdate}
         />
-        <div id="audioplayer" style={audioPlayerStyle}>
-          <progress
-            id="progressbar"
-            min="0"
-            max="100"
-            value="0"
-            style={progressBarStyle}
-          >
-            <WaveForm />
-          </progress>
-        </div>
+        <WaveForm timeupdate={this.state.currenttime} />
 
         <span id="currenttime" style={timeInfoStyle}>
           {" "}

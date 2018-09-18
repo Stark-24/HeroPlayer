@@ -5,13 +5,12 @@ const wavebars = {
   width: "780px",
   height: "50px",
   marginTop: "240px",
-  marginLeft: "30px",
   marginRight: "390px",
-  borderBottom: '2px',
-  padding: '0px'
+  marginLeft: "30px",
+  padding: "0px",
+  boxReflect: 'below',
+ 
 };
-
-
 
 class WaveForm extends React.Component {
   constructor(props) {
@@ -21,9 +20,7 @@ class WaveForm extends React.Component {
   render() {
     return (
       <div style={wavebars} id="waveform">
-      <WaveBar />
-
-        
+        <WaveBar timeupdate={this.props.timeupdate}/>
       </div>
     );
   }

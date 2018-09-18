@@ -2,23 +2,26 @@ import React from "react";
 
 const barHighlight = {
   fill: "#ec008c",
+  transition: 'fill 5s ease-in',
   opacity: 1
 };
 
 const barStyle = {
   fill: "#bfbfbf",
+  transition: 'fill 5s ease-in',
   opacity: 1
 };
 
 const randomNum = () => {
   return Math.floor(Math.random() * 80) + 150;
-}
+};
 
 class WaveBar extends React.Component {
   constructor(props) {
     super(props);
     this.mouseOverEffect = this.mouseOverEffect.bind(this);
     this.mouseOutEffect = this.mouseOutEffect.bind(this);
+    this.playMusic = this.playMusic.bind(this);
     this.state = {
       barClass: barStyle
     };
@@ -27,26 +30,34 @@ class WaveBar extends React.Component {
   mouseOverEffect(e) {
     var currentClass4 = document.getElementsByClassName("cls-4");
     for (var j = 0; j < currentClass4.length; j++) {
-      if (
-        Number(currentClass4[j].id) <= Number(e.target.id)
-      ) {
+      if (Number(currentClass4[j].id) <= Number(e.target.id)) {
         currentClass4[j].style.fill = "#ef9356";
-        e.target.style.fill = '#ef9356';
+        e.target.style.fill = "#ef9356";
       }
     }
   }
 
   mouseOutEffect(e) {
     var currentClass4 = document.getElementsByClassName("cls-4");
-    for(var i = 0; i < currentClass4.length; i++) {
-      if(Number(currentClass4[i].id) <= Number(e.target.id)) {
+    for (let i = 0; i < currentClass4.length; i++) {
+      if (Number(currentClass4[i].id) <= Number(e.target.id)) {
         e.target.style.fill = "#bfbfbf";
-        currentClass4[i].style.fill = "#bfbfbf"
+        currentClass4[i].style.fill = "#bfbfbf";
+      }
+    }
+  }
+
+  playMusic() {
+    var currentClass4 = document.getElementsByClassName("cls-4");
+    for(let i = 0; i < currentClass4.length; i++){
+      if(Number(currentClass4[i].id) <= this.props.timeupdate) {
+        currentClass4[i].style.fill="#fc4b00";
       }
     }
   }
 
   render() {
+    this.playMusic();
     return (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2317.386 166.99">
         <defs />
@@ -73,7 +84,7 @@ class WaveBar extends React.Component {
                 className="cls-3"
                 id="1"
                 width="9"
-                height= {randomNum()}
+                height={randomNum()}
               />
               <rect
                 onMouseEnter={this.mouseOverEffect}
@@ -246,7 +257,7 @@ class WaveBar extends React.Component {
                 onMouseEnter={this.mouseOverEffect}
                 onMouseLeave={this.mouseOutEffect}
                 className="cls-3"
-                id= '8'
+                id="8"
                 width="9"
                 height="251.104"
               />
@@ -254,7 +265,7 @@ class WaveBar extends React.Component {
                 onMouseEnter={this.mouseOverEffect}
                 onMouseLeave={this.mouseOutEffect}
                 className="cls-4"
-                id ='8'
+                id="8"
                 x="0.5"
                 y="0.5"
                 width="8"
@@ -268,15 +279,12 @@ class WaveBar extends React.Component {
               transform="translate(88)"
               style={this.state}
             >
-              <rect 
-                className="cls-3" 
-                id="9"
-                width="9" height="296.99" />
+              <rect className="cls-3" id="9" width="9" height="296.99" />
               <rect
                 onMouseEnter={this.mouseOverEffect}
                 onMouseLeave={this.mouseOutEffect}
                 className="cls-4"
-                id='9'
+                id="9"
                 x="0.5"
                 y="0.5"
                 width="8"
@@ -291,10 +299,10 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
                 className="cls-4"
-                id='10'
+                id="10"
                 x="0.5"
                 y="0.5"
                 width="8"
@@ -309,10 +317,10 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
                 className="cls-4"
-                id= '11'
+                id="11"
                 x="0.5"
                 y="0.5"
                 width="8"
@@ -327,9 +335,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id = '12'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="12"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -345,9 +353,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id= '13'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="13"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -363,9 +371,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='14'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="14"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -381,9 +389,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='15'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="15"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -405,9 +413,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='16'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="16"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -423,9 +431,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='17'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="17"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -441,9 +449,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='18'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="18"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -459,9 +467,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='19'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="19"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -477,9 +485,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='20'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="20"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -495,9 +503,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='21'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="21"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -513,9 +521,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='22'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="22"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -531,9 +539,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='23'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="23"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -549,9 +557,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='24'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="24"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -567,9 +575,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='25'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="25"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -585,9 +593,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='26'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="26"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -603,9 +611,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='27'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="27"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -621,9 +629,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='28'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="28"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -639,9 +647,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='29'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="29"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -657,9 +665,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='30'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="30"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -681,9 +689,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="149.964" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='31'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="31"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -699,9 +707,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="160.378" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='32'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="32"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -717,9 +725,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="149.964" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='33'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="33"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -735,9 +743,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="154.428" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='34'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="34"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -753,9 +761,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="149.964" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='35'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="35"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -771,9 +779,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="160.378" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='36'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="36"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -789,9 +797,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="149.964" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='37'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="37"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -807,9 +815,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="154.428" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='38'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="38"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -825,9 +833,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="182.649" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='39'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="39"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -843,9 +851,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="170.788" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='40'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="40"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -861,9 +869,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="175.873" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='41'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="41"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -879,9 +887,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="170.788" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='42'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="42"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -897,9 +905,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="182.649" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='43'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="43"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -915,9 +923,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="170.788" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='44'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="44"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -933,9 +941,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="175.873" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='45'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="45"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -950,7 +958,6 @@ class WaveBar extends React.Component {
             transform="translate(2051 1112.909)"
           >
             <g
-            
               id="Rectangle_64-4"
               data-name="Rectangle 64"
               className="cls-2"
@@ -958,9 +965,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='46'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="46"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -976,9 +983,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='47'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="47"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -994,9 +1001,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='48'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="48"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1012,9 +1019,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='49'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="49"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1030,9 +1037,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='50'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="50"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1048,9 +1055,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='51'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="51"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1066,9 +1073,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='52'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="52"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1084,9 +1091,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='53'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="53"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1102,9 +1109,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='54'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="54"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1120,9 +1127,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='55'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="55"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1138,9 +1145,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='56'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="56"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1156,9 +1163,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='57'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="57"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1174,9 +1181,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='58'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="58"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1192,9 +1199,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='59'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="59"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1210,9 +1217,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='60'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="60"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1234,9 +1241,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='61'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="61"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1252,9 +1259,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='62'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="62"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1270,9 +1277,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='63'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="63"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1288,9 +1295,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='64'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="64"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1306,9 +1313,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='66'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="66"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1324,9 +1331,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='67'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="67"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1342,9 +1349,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='68'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="68"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1360,9 +1367,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='69'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="69"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1378,9 +1385,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='70'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="70"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1396,9 +1403,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='71'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="71"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1414,9 +1421,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='72'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="72"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1432,9 +1439,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='73'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="73"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1450,9 +1457,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='74'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="74"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1468,9 +1475,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='75'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="75"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1486,9 +1493,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='76'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="76"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1510,9 +1517,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='77'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="77"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1528,9 +1535,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='78'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="78"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1546,9 +1553,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='79'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="79"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1564,9 +1571,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='80'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="80"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1582,9 +1589,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='81'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="81"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1600,9 +1607,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='82'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="82"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1618,9 +1625,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='83'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="83"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1636,9 +1643,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='84'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="84"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1654,9 +1661,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='85'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="85"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1672,9 +1679,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='86'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="86"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1690,9 +1697,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='87'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="87"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1708,9 +1715,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='88'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="88"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1726,9 +1733,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='89'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="89"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1744,9 +1751,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='90'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="90"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1762,9 +1769,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='91'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="91"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1786,9 +1793,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="186.155" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='92'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="92"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1804,9 +1811,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="199.083" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='93'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="93"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1822,9 +1829,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="186.155" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='94'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="94"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1840,9 +1847,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="191.697" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='95'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="95"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1858,9 +1865,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="186.155" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='96'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="96"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1876,9 +1883,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="199.083" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='97'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="97"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1894,9 +1901,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="186.155" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='98'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="98"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1912,9 +1919,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="191.697" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='99'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="99"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1930,9 +1937,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="226.728" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='100'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="100"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1948,9 +1955,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="212.005" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='101'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="101"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1966,9 +1973,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="218.316" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='102'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="102"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -1984,9 +1991,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="212.005" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='103'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="103"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2002,9 +2009,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="226.728" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='104'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="104"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2020,9 +2027,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="212.005" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='105'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="105"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2038,9 +2045,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="218.316" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='106'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="106"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2062,9 +2069,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='107'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="107"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2080,9 +2087,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='108'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="108"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2098,9 +2105,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='109'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="109"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2116,9 +2123,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='110'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="110"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2134,9 +2141,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='111'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="111"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2152,9 +2159,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='112'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="112"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2170,9 +2177,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='113'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="113"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2188,9 +2195,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='114'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="114"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2206,9 +2213,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='115'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="115"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2224,9 +2231,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='116'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="116"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2242,9 +2249,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='117'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="117"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2260,9 +2267,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='118'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="118"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2278,9 +2285,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='119'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="119"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2296,9 +2303,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='120'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="120"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2314,9 +2321,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='121'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="121"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2338,9 +2345,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="121.922" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='122'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="122"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2356,9 +2363,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="130.389" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='123'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="123"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2374,9 +2381,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="121.922" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='124'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="124"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2392,9 +2399,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="125.552" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='125'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="125"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2410,9 +2417,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="121.922" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='126'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="126"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2428,9 +2435,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="130.389" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='127'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="127"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2446,9 +2453,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="121.922" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='128'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="128"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2464,9 +2471,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="125.552" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='129'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="129"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2482,9 +2489,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="148.495" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='130'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="130"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2500,9 +2507,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="138.853" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='131'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="131"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2518,9 +2525,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="142.986" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='132'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="132"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2536,9 +2543,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="138.853" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='133'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="133"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2554,9 +2561,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="148.495" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='134'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="134"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2572,9 +2579,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="138.853" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='135'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="135"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2590,9 +2597,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="142.986" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='136'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="136"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2614,9 +2621,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='137'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="137"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2632,9 +2639,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='138'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="138"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2650,9 +2657,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='139'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="139"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2668,9 +2675,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='140'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="140"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2686,9 +2693,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='141'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="141"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2704,9 +2711,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='142'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="142"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2722,9 +2729,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='143'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="143"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2740,9 +2747,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='144'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="144"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2758,9 +2765,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='145'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="145"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2776,9 +2783,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='146'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="146"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2794,9 +2801,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='147'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="147"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2812,9 +2819,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='148'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="148"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2830,9 +2837,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='150'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="150"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2848,9 +2855,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='151'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="151"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2866,9 +2873,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='152'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="152"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2890,9 +2897,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='153'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="153"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2908,9 +2915,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='154'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="154"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2926,9 +2933,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='155'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="155"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2944,9 +2951,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='156'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="156"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2962,9 +2969,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='157'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="157"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2980,9 +2987,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='158'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="158"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -2998,9 +3005,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='159'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="159"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3016,9 +3023,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='160'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="160"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3034,9 +3041,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='161'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="161"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3052,9 +3059,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='162'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="162"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3070,9 +3077,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='163'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="163"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3088,9 +3095,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='164'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="164"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3106,9 +3113,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='165'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="165"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3124,9 +3131,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='166'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="166"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3142,9 +3149,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='167'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="167"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3166,9 +3173,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='168'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="168"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3184,9 +3191,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='169'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="169"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3202,9 +3209,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='170'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="170"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3220,9 +3227,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='171'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="171"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3238,9 +3245,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='172'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="172"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3256,9 +3263,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='173'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="173"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3274,9 +3281,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='174'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="174"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3292,9 +3299,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='175'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="175"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3310,9 +3317,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='176'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="176"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3328,9 +3335,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='177'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="177"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3346,9 +3353,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='178'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="178"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3364,9 +3371,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='179'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="179"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3382,9 +3389,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='180'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="180"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3400,9 +3407,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='181'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="181"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3418,9 +3425,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='182'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="182"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3442,9 +3449,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="81.468" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='183'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="183"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3460,9 +3467,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="87.126" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='184'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="184"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3478,9 +3485,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="81.468" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='185'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="185"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3496,9 +3503,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="83.894" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='186'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="186"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3514,9 +3521,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="81.468" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='187'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="187"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3532,9 +3539,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="87.126" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='188'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="188"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3550,9 +3557,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="81.468" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='189'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="189"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3568,9 +3575,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="83.894" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='190'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="190"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3586,9 +3593,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="99.224" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='191'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="191"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3604,9 +3611,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="92.781" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='192'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="192"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3622,9 +3629,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="95.543" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='193'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="193"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3640,9 +3647,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="92.781" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='194'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="194"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3658,9 +3665,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="99.224" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='195'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="195"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3676,9 +3683,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="92.781" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='196'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="196"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3694,9 +3701,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9" height="95.543" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='197'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="197"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3718,9 +3725,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='198'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="198"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3736,9 +3743,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='199'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="199"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3754,9 +3761,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='200'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="200"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3772,9 +3779,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='201'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="201"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3790,9 +3797,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='202'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="202"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3808,9 +3815,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="260.778" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='203'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="203"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3826,9 +3833,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="243.844" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='204'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="204"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3844,9 +3851,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="251.104" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='205'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="205"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3862,9 +3869,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='206'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="206"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3880,9 +3887,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='207'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="207"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3898,9 +3905,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='208'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="208"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3916,9 +3923,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='209'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="209"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3934,9 +3941,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="296.99" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='210'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="210"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3952,9 +3959,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="277.705" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='211'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="211"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
@@ -3970,9 +3977,9 @@ class WaveBar extends React.Component {
             >
               <rect className="cls-3" width="9.518" height="285.972" />
               <rect
-              onMouseEnter={this.mouseOverEffect}
-              onMouseLeave={this.mouseOutEffect}
-              id='212'
+                onMouseEnter={this.mouseOverEffect}
+                onMouseLeave={this.mouseOutEffect}
+                id="212"
                 className="cls-4"
                 x="0.5"
                 y="0.5"
