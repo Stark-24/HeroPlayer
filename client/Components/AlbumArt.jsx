@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ModalModalExample from "./ModalRender.jsx";
 
+
 const albumArt = {
   width: "340px",
   height: "340px",

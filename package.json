@@ -9,7 +9,8 @@
   },
   "scripts": {
     "server-dev": "nodemon ./server",
-    "react-dev": "webpack -w"
+    "react-dev": "webpack -w",
+    "test": "jest ./specs/test.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -20,7 +21,6 @@
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
-    "jest": "^23.5.0",
     "jimp": "^0.5.0",
     "nodemon": "^1.18.4",
     "path": "^0.12.7",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "jest": "^23.6.0",
     "react-svg-loader": "^2.1.0",
     "webpack": "^4.17.2"
   }

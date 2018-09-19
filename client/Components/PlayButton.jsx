@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Play from "./Play.jsx";
 import Pause from "./Pause.jsx";
-import axios from "axios";
-import humanized_time_span from '../humanizedtime.js'
+import humanized_time_span from './helperfunctions/humanizedtime.js'
 
 const playlist = {
   width: "650px",

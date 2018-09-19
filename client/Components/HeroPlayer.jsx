@@ -3,7 +3,8 @@ import PlayButton from "./PlayButton.jsx";
 import AlbumArt from "./AlbumArt.jsx";
 import WaveForm from "./WaveForm.jsx";
 import axios from "axios";
-import RGBaster from "./rgbaster.js";
+import RGBaster from "./helperfunctions/rgbaster.js";
+import ReactDOM from 'react-dom';
 
 const divStyle = {
   height: "380px",
@@ -171,4 +172,4 @@ class HeroPlayer extends React.Component {
   }
 }
 
-export default HeroPlayer;
+module.exports = HeroPlayer;
