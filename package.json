@@ -1,9 +1,7 @@
 {
   "name": "",
   "jest": {
-    "transform": {
-      "^.+\\.js$": "babel-jest"
-    },
+    "transform": {".*": "/Users/julieim/Desktop/hrla24-front-end-capstone/node_modules/babel-jest"},
     "moduleFileExtensions": [
       "js",
       "jsx"
@@ -23,7 +21,7 @@
   "scripts": {
     "server-dev": "nodemon ./server",
     "react-dev": "webpack -w",
-    "test": "jest-webpack"
+    "test": "jest"
   },
   "dependencies": {
     "axios": "^0.18.0",
