@@ -4,7 +4,6 @@ import AlbumArt from "./AlbumArt.jsx";
 import WaveForm from "./WaveForm.jsx";
 import axios from "axios";
 import RGBaster from "./helperfunctions/rgbaster.js";
-import ReactDOM from 'react-dom';
 
 const divStyle = {
   height: "380px",

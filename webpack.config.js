@@ -43,4 +43,7 @@ module.exports = {
     path: __dirname + "/public",
     filename: "app.js"
   }
+  // resolve: {
+  //   extensions: ['.js', '.jsx']
+  // }
 };
