@@ -11,9 +11,8 @@ const divStyle = {
   marginTop: "47px",
   marginRight: "auto",
   marginLeft: "auto",
-  background: "#8fa3a3"
-};
-
+  backgroundImage: "linear-gradient(to right, #FFA500 , white)"
+}
 const timeInfoStyle = {
   position: "relative",
   bottom: "0px",
