@@ -1,0 +1,16 @@
+version: '2'
+services:
+  server:
+    build: .
+    ports: 
+      - 9001:9001
+    depends_on: 
+      - db
+    environment: 
+      - DATABASE_URL=postgres://starkcloud@db:5432/starkcloud_player
+  db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_DB=starkcloud_player
+      - POSTGRES_USER=starkcloud

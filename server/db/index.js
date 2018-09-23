@@ -1,8 +1,13 @@
 const Sequelize = require('sequelize');
 const postgres = require('pg');
-const connection = new Sequelize('starkcloud_player', 'starkcloud', '', {
-    host: 'localhost',
-    dialect: 'postgres'
+const amazonrds = require('/Users/julieim/Desktop/amazonrds.json')
+const connection = new Sequelize('starkcloud_player', 'postgres', 'postgres123', {
+    host: amazonrds.rdsurl,
+    dialect: 'postgres',
+    port: 5432,
+    dialectOptions: {
+        ssl: 'Amazon RDS'
+    }
 })
 
 connection.authenticate()
@@ -12,3 +17,4 @@ connection.authenticate()
 //sequelize.connect();
 
 module.exports = connection;
+
