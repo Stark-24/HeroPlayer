@@ -57,7 +57,7 @@ class HeroPlayer extends React.Component {
 
   fetchMusic() {
     axios
-      .get("api/heroPlayer", {
+      .get("http://54.203.74.213:9001/api/heroPlayer", {
         headers: {
           "Access-Control-Allow-Origin": "*",
           "content-type": "application/x-www-form-urlencoded"

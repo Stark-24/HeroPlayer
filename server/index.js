@@ -1,6 +1,5 @@
 var express = require("express");
 var parser = require("body-parser");
-var db = require("./db");
 var path = require("path");
 const router = require("./routes.js");
 var PORT = 9001;

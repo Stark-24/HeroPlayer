@@ -25,3 +25,6 @@ build/
 dist/
 
 node_modules
+aws-credentials.json
+amazonrds.js
+./server/db/index.js
