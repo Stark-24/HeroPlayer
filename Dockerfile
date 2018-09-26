@@ -6,8 +6,6 @@ ADD . /usr/src/app
 
 RUN npm install
 
-RUN npm run react-dev
-
 EXPOSE 9001
 
 CMD ["npm", "start"]

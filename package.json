@@ -22,7 +22,7 @@
   },
   "scripts": {
     "start": "node ./server/index.js",
-    "react-dev": "webpack",
+    "react-dev": "webpack -w",
     "test": "jest"
   },
   "dependencies": {
